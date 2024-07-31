@@ -1,0 +1,48 @@
+.Model3{
+    position: absolute;
+    top: 80%;
+    left: -40%;
+    transform: translate(-50%,-50%);
+    width: 1200px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 5px 5px 15px 5px #888888;
+    z-index: 3;
+    padding: 30px;
+}
+
+.Model3 h2{
+    color: rgb(7, 7, 7);
+    font-size: 30px;
+    margin: 0px 20px;
+}
+
+.Model3 p{
+    color: #888888;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.Model3 button{
+    background-color: rgb(7, 7, 7);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    margin: 20px 0px;
+    border-radius: 10px;
+    transition: 0.5s ease;
+
+}
+
+.Model3 button:hover{
+    background-color: rgb(33, 31, 31);
+    color: rgb(255, 255, 255);
+}

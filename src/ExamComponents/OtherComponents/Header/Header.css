@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.logo hr {
+  width: 1px;
+  height: 50px;
+  background-color: #ccc;
+  border: none;
+  margin-left: 15px;
+}
+
+.header-title {
+  margin-left: -60px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.timer-wrapper {
+  display: flex;
+  align-items: center;
+}

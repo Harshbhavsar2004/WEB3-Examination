@@ -1,0 +1,143 @@
+/* Reset some default styles */
+/* body,
+html {
+    margin: 0;
+    padding: 0;
+} */
+
+/* Container for the Profile component */
+.home_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Log out button */
+.log-button {
+    margin-top: 20px;
+    margin-left: 1200px;
+    padding: .6rem;
+    width: 10rem;
+    background: #E74C3C;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all .5s;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.log-button:hover {
+    background-color: #F5B7B1;
+    color: #A93226;
+}
+
+/* Start Exam button */
+.start-button {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: .6rem;
+    width: 10rem;
+    background: #28B463;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    transition: all .5s;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.start-button:hover {
+    background-color: #ABEBC6;
+    color: #0E6251 ;
+}
+
+
+/* Title */
+.title {
+    margin-top: 1rem;
+}
+
+.title_text-center {
+    font-family: Arial, Helvetica, sans-serif;
+    float: left;
+}
+/* Webcam video or captured image */
+.webcam-container {
+    margin-top: 2rem;
+    width: 400px;
+    height: 400px;
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.webcam-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Capture or retake button */
+.button-container {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-success {
+    background-color: #007bff;
+}
+
+button[disabled], input[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6; /* optional: reduces opacity of the disabled button */
+  }
+
+/* Checkbox for terms and conditions */
+.checkbox-container {
+    margin-top: 1rem;
+}
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.themainchange{
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background-color: #A93226;
+    color: white;
+    font-weight: 600;
+    width: 200px;
+    height: 40px;
+    margin-left: 1000px;
+}

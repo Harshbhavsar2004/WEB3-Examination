@@ -1,0 +1,39 @@
+/* QuizNavigation component styles */
+.quiz-navigation {
+    display: grid;
+    place-items: center;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 20px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 22px 0px;
+  }
+  
+  .quiz-navigation button {
+    width: 70px;
+    height: 70px;
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    text-align: center; /* Centered text */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margin */
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .quiz-navigation button:hover {
+    background-color: #45a049; /* Darker green */
+  }
+  
+  .quiz-navigation button:focus {
+    outline: none; /* Remove outline */
+  }
+  
+  .quiz-navigation button.active {
+    background-color: #008CBA; /* Blue */
+  }
+  

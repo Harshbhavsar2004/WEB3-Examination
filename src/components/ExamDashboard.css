@@ -1,0 +1,90 @@
+/* exam-details.css */
+
+.container {
+  /* max-width: 800px; */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+nav{
+  max-width: 85%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container h1 {
+  text-align: center; /*Add this line to center the h1 element  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form_data {
+  max-width: 550px;
+  margin: 25px auto;
+  padding: 35px 10px;
+  box-shadow: 0 0 20px -10px #2d3748;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exam-card {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.exam-thumbnail {
+  display: flex;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.exam-info {
+  flex-grow: 1;
+  
+}
+
+.exam-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.exam-info p {
+  font-size: 18px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.btn.btn-primary1 {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #1a365d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all .3s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn.btn-primary1:hover {
+  background-color: #A9CCE3;
+  color: #154360;
+}

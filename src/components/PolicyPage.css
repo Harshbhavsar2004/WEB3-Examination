@@ -1,0 +1,75 @@
+/* PolicyPage.css */
+
+/* Styles for the container */
+.container_policy {
+    /* justify-content: center;
+    align-items: center; */
+    height: 80vh;
+}
+
+.container_policy h1 {
+    text-align: center;
+}
+
+/* Styles for the form data and content section */
+.form_data_policy {
+    max-width: 100%;
+    /* Adjust the max-width as needed */
+}
+
+.list {
+    list-style-type: square ;
+    padding: 0;
+    margin-left: 30px;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #333;
+}
+
+.list li {
+    margin-bottom: 16px;
+}
+
+.list p {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+/* Styles for the proceed button */
+#prc_btn {
+    /* background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer; */
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #1a365d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all .3s;
+}
+
+#prc_btn span {
+    margin-right: 8px;
+}
+
+#prc_btn:hover {
+    background-color: #A9CCE3;
+    color: #154360;
+}
