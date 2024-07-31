@@ -20,10 +20,11 @@ const ExamDetails = () => {
                             <img src="./blockchain_exam_(ExamDashboard).jpeg" alt="exam-thumbnail" className="exam-thumbnail" />
                             <div className="exam-info">
                                 <h2>Blockchain Exam</h2>
-                                <p>Date: April 30, 2023</p>
-                                <p>Time: 10:00 AM - 12:00 PM</p>
+                                <p>Date: July 31, 2024</p>
+                                <p>Time: 11:00 AM - 1:00 PM</p>
                                 <p>Duration: 2 hours</p>
                                 <p>Location: Online</p>
+
                                 <Link to="/policy">
                                     <button className="btn btn-primary1" type="submit"><span> Start Exam </span></button>
                                 </Link>
