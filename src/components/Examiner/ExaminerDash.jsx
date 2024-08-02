@@ -20,7 +20,7 @@ const ExaminerDash = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3000/fetchusers', {
+      const response = await fetch('https://examination-center.onrender.com/fetchusers', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -59,7 +59,7 @@ const ExaminerDash = () => {
 
   const handleResetCounts = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:3000/resetCounts/${userId}`, {
+      const response = await fetch(`https://examination-center.onrender.com/resetCounts/${userId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -83,7 +83,7 @@ const ExaminerDash = () => {
 
   const showCheat = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:3000/cheat/${userId}`, {
+      const response = await fetch(`https://examination-center.onrender.com/cheat/${userId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });

@@ -38,7 +38,7 @@ function App() {
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
 
-    const res = await fetch("http://localhost:3000/validuser", {
+    const res = await fetch("https://examination-center.onrender.com/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

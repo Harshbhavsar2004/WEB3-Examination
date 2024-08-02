@@ -23,7 +23,7 @@ function AudioDetector() {
                         setCount(prevCount => prevCount + 1); // Increment Count variable
                         swal("Voice Detected", "Action has been recorded", "error");
                         // Hit the backend endpoint using fetch
-                        fetch('http://localhost:3000/voice', {
+                        fetch('https://examination-center.onrender.com/voice', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

@@ -59,7 +59,7 @@ const Login = () => {
         } else {
             // console.log("user login succesfully done");
 
-            const data = await fetch('http://localhost:3000/login', {
+            const data = await fetch('https://examination-center.onrender.com/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

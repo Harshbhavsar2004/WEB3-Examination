@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Model3 from './Model3';
 
-const socket = io('http://localhost:3000', {
+const socket = io('https://examination-center.onrender.com', {
   transports: ['websocket']
 });
 

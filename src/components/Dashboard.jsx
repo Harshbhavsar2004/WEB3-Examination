@@ -19,7 +19,7 @@ const Dashboard = () => {
   const DashboardValid = async () => {
     let token = localStorage.getItem('usersdatatoken');
     console.log(token)
-    const res = await fetch('http://localhost:3000/validuser', {
+    const res = await fetch('https://examination-center.onrender.com/validuser', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await fetch('http://localhost:3000/Score', {
+      const response = await fetch('https://examination-center.onrender.com/Score', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -93,7 +93,7 @@ const Dashboard = () => {
   const handleResetCounts = async () => {
     try {
       const token = localStorage.getItem('usersdatatoken');
-      const response = await fetch('http://localhost:3000/resetCounts', {
+      const response = await fetch('https://examination-center.onrender.com/resetCounts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ const Dashboard = () => {
         return;
       }
 
-      const response = await fetch('http://localhost:3000/cheat', {
+      const response = await fetch('https://examination-center.onrender.com/cheat', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
