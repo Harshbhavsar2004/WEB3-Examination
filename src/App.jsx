@@ -21,8 +21,8 @@ import { Routes, Route, useNavigate } from "react-router-dom"
 import { useEffect, useContext, useState } from "react";
 import { LoginContext } from "./components/ContextProvider/Context";
 import FullScreenExample from "./components/Fullscreen2";
-import Examiner from "./components/Examiner";
-import ExaminerDash from "./components/ExaminerDash";
+import Examiner from "./components/Examiner/Examiner";
+import ExaminerDash from "./components/Examiner/ExaminerDash";
 import Dashboard from "./components/Dashboard";
 // import "./App.css"
 
@@ -38,7 +38,7 @@ function App() {
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
 
-    const res = await fetch("https://examination-center.onrender.com/validuser", {
+    const res = await fetch("http://localhost:3000/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

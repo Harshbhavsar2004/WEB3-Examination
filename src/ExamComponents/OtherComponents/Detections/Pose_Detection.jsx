@@ -123,7 +123,7 @@ const FaceDetection = () => {
 
         // Increment leftCount and send to backend
         try {
-            await fetch('https://examination-center.onrender.com/left', {
+            await fetch('http://localhost:3000/left', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ const FaceDetection = () => {
 
         // Increment rightCount and send to backend
         try {
-            await fetch('https://examination-center.onrender.com/right', {
+            await fetch('http://localhost:3000/right', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

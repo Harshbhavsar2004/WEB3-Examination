@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
-
-import Header from "./Header";
-import "./mix.css"
-
+import toast, { Toaster } from 'react-hot-toast';
+import Header from "../Header";
+import "../mix.css"
+import "./examinerdashboard.css"
 
 const Examiner = () => {
 
@@ -43,7 +40,7 @@ const Examiner = () => {
             });
         } else if (!email.includes("@")) {
             // alert("Includes @ in your email!")
-            toast.warning("Includes @ in your email!", {
+            toast.error("Includes @ in your email!", {
                 position: "top-center"
             });
         } else if (password === "") {
@@ -63,8 +60,19 @@ const Examiner = () => {
             //  console.log(res);
 
             if (email == "test@gmail.com" && password == "pass123") {
-                
-                history("/examinerdash")
+                toast.success('Logged in successfully!', {
+                    duration: 4000,
+                    position: 'top-center',
+                    style: {
+                      background: '#fff',
+                      color: '#000',
+                      fontWeight: 'bold',
+                    },
+                  });
+          
+                setTimeout(()=>{
+                    history("/examinerdash")
+                },1000)
                 setInpval({ ...inpval, email: "", password: "" });
             } else {
                 // alert("Invalid Credentials!")
@@ -80,7 +88,7 @@ const Examiner = () => {
         <>
             <Header />
             <section>
-                <ToastContainer />
+                <Toaster />
                 <div className="form_data">
                     <div className="form_heading">
                         <h1>Examiner Login</h1>
