@@ -97,8 +97,8 @@ const Dashboard = () => {
           <Button variant="contained" color="primary" onClick={goToExamDashboard} className='dashboard-button'>
             <AiFillCaretRight />GO to Dashboard
           </Button>
-            <Link to={'/DocumentDownloader'}><Button variant='contained' className='dashboard-button1'>
-            <IoMdDownload/><strong>Download Certificate</strong></Button></Link>
+            {/* <Link to={'/DocumentDownloader'}><Button variant='contained' className='dashboard-button1'>
+            <IoMdDownload/><strong>Download Certificate</strong></Button></Link> */}
         </div>
       ) : (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>

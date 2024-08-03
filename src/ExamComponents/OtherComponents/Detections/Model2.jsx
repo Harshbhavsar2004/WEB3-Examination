@@ -60,11 +60,12 @@ const App = () => {
     return (
         <div>
             <ToastContainer />
-            {showModal && (
+            {/* {showModal && (
                 <div>
                     <Model3 />
                 </div>
-            )}
+            )} */}
+            <Model3/>
         </div>
     );
 };

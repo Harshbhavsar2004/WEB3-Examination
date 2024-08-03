@@ -113,13 +113,6 @@ const FaceDetection = () => {
     const token = localStorage.getItem('usersdatatoken'); // Assuming token is saved in localStorage
 
     if (blendShapes[0].categories[13].score >= 0.7) {
-        swal({
-            title: "WARNING!!",
-            text: "You are looking left",
-            icon: "warning",
-            button: "OK",
-            timer: 5000,
-        });
 
         // Increment leftCount and send to backend
         try {
@@ -137,13 +130,6 @@ const FaceDetection = () => {
     }
 
     if (blendShapes[0].categories[14].score >= 0.7) {
-        swal({
-            title: "WARNING!!",
-            text: "You are looking right",
-            icon: "warning",
-            button: "OK",
-            timer: 5000,
-        });
 
         // Increment rightCount and send to backend
         try {

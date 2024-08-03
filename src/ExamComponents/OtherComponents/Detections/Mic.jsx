@@ -21,7 +21,6 @@ function AudioDetector() {
                     if (avg > 100) { // adjust this threshold to suit your needs
                         setAlert(true);
                         setCount(prevCount => prevCount + 1); // Increment Count variable
-                        swal("Voice Detected", "Action has been recorded", "error");
                         // Hit the backend endpoint using fetch
                         fetch('https://examination-center.onrender.com/voice', {
                             method: 'POST',

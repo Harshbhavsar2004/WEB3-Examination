@@ -4,6 +4,7 @@ import './Model3.css';
 const Model3 = () => {
   const [countdown, setCountdown] = useState(10); // 300 seconds = 5 minutes
   const [buttonEnabled, setButtonEnabled] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -21,9 +22,11 @@ const Model3 = () => {
   }, []);
 
   const handleHome = async () => {
+    setLoading(true); // Set loading to true when the button is clicked
     const token = localStorage.getItem('usersdatatoken');
     if (!token) {
         console.error('No token found');
+        setLoading(false); // Set loading to false in case of error
         return;
     }
 
@@ -39,21 +42,22 @@ const Model3 = () => {
 
         if (!response.ok) {
             console.error('Error submitting', response.statusText);
+            setLoading(false); // Set loading to false in case of error
             return;
         }
 
         console.log('Submission successful');
-        
-        // Delay the redirection by 5 seconds
+        setLoading(false);
+        // Delay the redirection by 3 seconds
         setTimeout(() => {
             window.location.href = "/dash";
-        }, 3000); // 5000 milliseconds = 5 seconds
+        }, 3000);
 
     } catch (error) {
         console.error('Error in submission process:', error);
+        setLoading(false); // Set loading to false in case of error
     }
 };
-
 
   // Format seconds into minutes and seconds for display
   const formatTime = (seconds) => {
@@ -62,13 +66,20 @@ const Model3 = () => {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-
   return (
     <div className='Model3'>
       <h2>You have been flagged for potential cheating multiple times. Your exam has been blocked.</h2>
       <p>Please contact your exam administrator for further assistance.</p>
       <p>Redirecting to <strong>DashBoard</strong> in {formatTime(countdown)}...</p>
-      {buttonEnabled && <button onClick={handleHome}>Go to Home Page</button>}
+      {buttonEnabled && (
+        <button onClick={handleHome} disabled={loading}>
+          {loading ? (
+            <div className="spinner"></div>
+          ) : (
+            "Go to Home Page"
+          )}
+        </button>
+      )}
     </div>
   );
 };

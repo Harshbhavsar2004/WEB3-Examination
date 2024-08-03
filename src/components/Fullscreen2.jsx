@@ -24,8 +24,6 @@ function ResizeComponent() {
 
   return (
     <div>
-      <h1>Resize the window to see the toast message</h1>
-      <ToastContainer />
     </div>
   );
 }
