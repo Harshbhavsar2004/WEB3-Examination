@@ -15,77 +15,86 @@ nav{
   align-items: center;
 }
 
-.container h1 {
-  text-align: center; /*Add this line to center the h1 element  */
+/* Title styling */
+.exam-title {
+  text-align: center;
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Navigation styling */
+.exam-nav {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.form_data {
-  max-width: 550px;
-  margin: 25px auto;
-  padding: 35px 10px;
-  box-shadow: 0 0 20px -10px #2d3748;
-  border-radius: 10px;
+/* Data container styling */
+.exam-data {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
+/* Card styling */
 .exam-card {
+  width: calc(100% - 55%);
   display: flex;
+  padding: 20px;
   align-items: center;
-  margin-top: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
+/* Thumbnail styling */
 .exam-thumbnail {
-  display: flex;
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  margin-right: 20px;
+  width: auto;
+  height: auto;
+  border-radius: 10px 0 0 10px;
 }
 
+/* Information section styling */
 .exam-info {
-  flex-grow: 1;
-  
+  padding: 20px;
+  flex: 1;
 }
 
-.exam-info h2 {
-  font-size: 24px;
+/* Exam name styling */
+.exam-name {
+  font-size: 28px;
+  color: #333;
   margin-bottom: 10px;
-  text-align: left;
 }
 
-.exam-info p {
-  font-size: 18px;
+/* Exam details styling */
+.exam-date,
+.exam-time,
+.exam-duration,
+.exam-location {
+  font-size: 16px;
+  color: #666;
   margin-bottom: 5px;
-  text-align: left;
 }
 
-.btn.btn-primary1 {
+/* Button styling */
+.btn-start-exam-main{
   display: inline-block;
   padding: 10px 20px;
   font-size: 18px;
-  text-align: center;
-  background-color: #1a365d;
   color: #fff;
+  background: #242c34;
   border: none;
   border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: all .3s;
-  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.btn.btn-primary1:hover {
-  background-color: #A9CCE3;
-  color: #154360;
+.btn-start-exam-main:hover {
+  background: #0056b3;
 }

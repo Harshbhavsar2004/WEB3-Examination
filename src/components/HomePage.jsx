@@ -2,9 +2,13 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import { LoginContext } from "./ContextProvider/Context";
 import * as faceapi from "face-api.js";
+import toast, { Toaster } from "react-hot-toast";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faCamera, faRetweet, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import "./HomePage.css";
 
 const WebcamComponent = () => <Webcam />;
@@ -26,8 +30,9 @@ const Profile = () => {
   const [matchStatus, setMatchStatus] = useState("");
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showCelebration, setShowCelebration] = useState(false); // Add state for celebration
 
-  // Load Models to compare images
   useEffect(() => {
     const loadModels = async () => {
       const MODEL_URL = "/models";
@@ -46,13 +51,11 @@ const Profile = () => {
     loadModels();
   }, []);
 
-  // Realtime capture image function
   const capture = React.useCallback(() => {
     const pictureSrc = webcamRef.current.getScreenshot();
     setPicture(pictureSrc);
   }, [webcamRef, setPicture]);
 
-  // User Validation Function
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
     const res = await fetch("https://examination-center.onrender.com/validuser", {
@@ -66,7 +69,6 @@ const Profile = () => {
     if (data.status === 401 || !data) {
       history.push("*");
     } else {
-      console.log("user verify");
       setLoginData(data);
       setData(data);
       setPhotoUrl(data.ValidUserOne.photo);
@@ -81,15 +83,14 @@ const Profile = () => {
     }, 2000);
   }, []);
 
-  // Compare Stored Image & Capture Image Function
   const compareImages = async () => {
+    setLoading(true);
     try {
       if (!modelsLoaded) {
         console.log("Models not loaded yet!");
         return;
       }
 
-      // Load the captured image and detect all faces in it.
       const image = await faceapi.fetchImage(picture);
       const faceDetections = await faceapi
         .detectAllFaces(image)
@@ -97,11 +98,10 @@ const Profile = () => {
         .withFaceDescriptors();
       if (!faceDetections.length) {
         console.log("No faces detected in the captured image!");
-        alert("No faces detected in the captured image!");
+        toast.error("No faces detected in the captured image!", { position: 'bottom-right' });
         return;
       }
 
-      // Load the stored image and detect all faces in it.
       const storedImage = await faceapi.fetchImage(photoUrl);
       const storedFaceDetections = await faceapi
         .detectAllFaces(storedImage)
@@ -110,19 +110,15 @@ const Profile = () => {
 
       if (!storedFaceDetections.length) {
         console.log("No faces detected in the stored image!");
-        alert("No faces detected in the stored image!");
+        toast.error("No faces detected in the stored image!", { position: 'bottom-right' });
         return;
       }
 
-      // Create a FaceMatcher object with all the face descriptors from the stored image.
       const faceMatcher = new faceapi.FaceMatcher(storedFaceDetections);
-
-      // Match each face in the captured image to the stored faces.
       const matchResults = faceDetections.map((faceDetection) =>
         faceMatcher.findBestMatch(faceDetection.descriptor)
       );
 
-      // Determine the best match based on the distance between the face descriptors.
       const bestMatch = matchResults.reduce((prev, current) =>
         prev.distance < current.distance ? prev : current
       );
@@ -130,40 +126,35 @@ const Profile = () => {
       if (bestMatch.label === "unknown") {
         console.log("Face not matched!");
         setMatchStatus("Face not matched!");
+        toast.error("Face not matched!", { position: 'bottom-right' });
       } else {
         console.log(`Face matched with ${bestMatch.label}!`);
-        setMatchStatus(
-          `Face matched with ${
-            logindata
-              ? logindata.ValidUserOne.fname +
-                " " +
-                logindata.ValidUserOne.lname
-              : ""
-          }!`
-        );
+        setMatchStatus(`Face matched with ${logindata ? logindata.ValidUserOne.fname : null}!`);
+        toast.success(`Face matched with ${logindata ? logindata.ValidUserOne.fname : ""}!`, { position: 'bottom-right' });
+        setShowCelebration(true); // Show celebration on successful match
       }
     } catch (error) {
       console.log("Error: ", error);
+      toast.error("An error occurred while comparing images!", { position: 'bottom-right' });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="home_container">
+      <Toaster position="top-center" reverseOrder={false} />
       <Link to="/dash">
-        <button className="themainchange">
+        <button className="go-back-btn">
+          <FontAwesomeIcon icon={faHome} className="icon" />
           GO back to DashBoard
         </button>
       </Link>
 
-      <h2 className="title_text-center"> Capture Your Image </h2>
+      <h2 className="title_text-center">Capture Your Image</h2>
       <br />
       {matchStatus ? (
-        <p
-          style={{
-            color: matchStatus.includes("not") ? "red" : "green",
-            fontWeight: "bold",
-          }}
-        >
+        <p style={{ color: matchStatus.includes("not") ? "red" : "green", fontWeight: "bold" }}>
           {matchStatus}
         </p>
       ) : null}
@@ -183,7 +174,7 @@ const Profile = () => {
           <img src={picture} alt="captured" />
         )}
       </div>
-      <div>
+      <div className="button-container">
         {picture !== "" ? (
           <button
             onClick={(e) => {
@@ -193,6 +184,7 @@ const Profile = () => {
             className="btn btn-primary"
             disabled={matchStatus.includes("Face matched with")}
           >
+            <FontAwesomeIcon icon={faRetweet} className="icon" />
             Retake
           </button>
         ) : (
@@ -203,6 +195,7 @@ const Profile = () => {
             }}
             className="btn btn-danger"
           >
+            <FontAwesomeIcon icon={faCamera} className="icon" />
             Capture
           </button>
         )}
@@ -214,7 +207,9 @@ const Profile = () => {
           className="btn btn-success"
           disabled={picture === "" || matchStatus.includes("Face matched with")}
         >
-          Verify
+          <FontAwesomeIcon icon={faCheckCircle} className="icon"/>
+          verify
+          {loading && <div>...</div>}
         </button>
       </div>
       <p>
@@ -230,8 +225,8 @@ const Profile = () => {
             !matchStatus
               ? "Please capture your image and click Verify first"
               : matchStatus.includes("not")
-              ? "Images do not match, please try again"
-              : ""
+                ? "Images do not match, please try again"
+                : ""
           }
         />{" "}
         <span style={{ color: !matchStatus ? "gray" : "inherit" }}>
@@ -239,7 +234,7 @@ const Profile = () => {
         </span>
       </p>
       <div className="text-center">
-        <FullScreen handle={handle} >
+        <FullScreen handle={handle}>
           <Link to="/eapp">
             <button
               onClick={handle.enter}
@@ -256,7 +251,14 @@ const Profile = () => {
           </Link>
         </FullScreen>
       </div>
+      {/* {showCelebration && (
+        <div className="celebration">
+          <div className="message">Congratulations!</div>
+          <div className="confetti"></div>
+        </div>
+      )} */}
     </div>
   );
 };
+
 export default Profile;

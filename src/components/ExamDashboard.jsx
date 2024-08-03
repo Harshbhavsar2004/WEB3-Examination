@@ -1,34 +1,31 @@
-
-import { React } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Header from "./Header";
+import Header from './Header';
 import './ExamDashboard.css';
 
 const ExamDetails = () => {
-
-
     return (
         <>
             <Header />
-            <div className="container">
-                <h1>Exam Details</h1>
-
-                <nav>
-                    <div className="form_data">
+            <div className="exam-container">
+                <h1 className="exam-title">Exam Details</h1>
+                <nav className="exam-nav">
+                    <div className="exam-data">
                         <div className="exam-card">
                             <img src="./blockchain_exam_(ExamDashboard).jpeg" alt="exam-thumbnail" className="exam-thumbnail" />
                             <div className="exam-info">
-                                <h2>Blockchain Exam</h2>
-                                <p>Date: July 31, 2024</p>
-                                <p>Time: 11:00 AM - 1:00 PM</p>
-                                <p>Duration: 2 hours</p>
-                                <p>Location: Online</p>
+                                <h2 className="exam-name">Blockchain Exam</h2>
+                                <p className="exam-date">Date: July 31, 2024</p>
+                                <p className="exam-time">Time: 11:00 AM - 1:00 PM</p>
+                                <p className="exam-duration">Duration: 2 hours</p>
+                                <p className="exam-location">Location: Online</p>
 
                                 <Link to="/policy">
-                                    <button className="btn btn-primary1" type="submit"><span> Start Exam </span></button>
+                                    <button className="btn-start-exam-main" type="submit">
+                                        <span>Start Exam</span>
+                                    </button>
                                 </Link>
-                                {/* <button className="btn btn-primary1">Start Exam</button> */}
                             </div>
                         </div>
                     </div>

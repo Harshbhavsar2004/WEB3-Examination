@@ -1,12 +1,8 @@
 
 // ---------------------------------------(this code perfectly works)------------------------------------------------------
 import React, { useState } from 'react'
-import { NavLink } from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
-// import axios from 'axios';
-
-import 'react-toastify/dist/ReactToastify.css';
-
+import { NavLink, useNavigate } from "react-router-dom"
+import toast, { Toaster } from 'react-hot-toast';
 import Header from "./Header";
 import "./mix.css"
 
@@ -15,7 +11,7 @@ const Register = () => {
 
     const [passShow, setPassShow] = useState(false);
     const [cpassShow, setCPassShow] = useState(false);
-
+    const history = useNavigate()
     const [inpval, setInpval] = useState({
         fname: "",
         lname: "",
@@ -82,7 +78,7 @@ const Register = () => {
 
         try {
             if (fname === "") {
-                toast.warning("First Name is required!", {
+                toast.error("First Name is required!", {
                     position: "top-center"
                 });
             } else if (lname === "") {
@@ -90,7 +86,7 @@ const Register = () => {
                     position: "top-center"
                 });
             } else if (!/^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
-                toast.warning("Please enter a valid email address!", {
+                toast.error("Please enter a valid email address!", {
                     position: "top-center"
                 });
             } else if (!/^[0-9]{10}$/.test(phone)) {
@@ -98,23 +94,23 @@ const Register = () => {
                     position: "top-center"
                 });
             } else if (dob === "") {
-                toast.warning("Date of Birth is required!", {
+                toast.error("Date of Birth is required!", {
                     position: "top-center"
                 });
             } else if (course === "") {
-                toast.warning("Course is required!", {
+                toast.error("Course is required!", {
                     position: "top-center"
                 });
             } else if (batch === "") {
-                toast.warning("Batch is Required!", {
+                toast.error("Batch is Required!", {
                     position: "top-center"
                 });
             } else if (gender === "") {
-                toast.warning("Select Your Gender!", {
+                toast.error("Select Your Gender!", {
                     position: "top-center"
                 });
             } else if (nationality === "") {
-                toast.warning("Nationality is required!", {
+                toast.error("Nationality is required!", {
                     position: "top-center"
                 });
             } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)) {
@@ -126,11 +122,11 @@ const Register = () => {
                     position: "top-center"
                 });
             } else if (photo === "") {
-                toast.warning("Upload Photo!", {
+                toast.error("Upload Photo!", {
                     position: "top-center"
                 });
             } else if (sign === "") {
-                toast.warning("Upload Sign!", {
+                toast.error("Upload Sign!", {
                     position: "top-center"
                 });
             } else {
@@ -151,9 +147,6 @@ const Register = () => {
 
                 const data = await fetch("https://examination-center.onrender.com/register", {
                     method: "POST",
-                    // headers: {
-                    //     "Content-Type": "application/json"
-                    // },
                     body: formData
                 });
 
@@ -165,7 +158,7 @@ const Register = () => {
                     });
                     setInpval({ ...inpval, fname: "", lname: "", email: "", phone: "", dob: "", course: "", batch: "", gender: "", nationality: "", password: "", cpassword: "", photo: "", sign: "" });
                     setTimeout(()=>{
-                        window.location.href = "/login";
+                        history('/login')
                     },1500)
                 }
             }
@@ -181,14 +174,12 @@ const Register = () => {
         <>
             <Header />
             <section>
-
                 <div className="form_data">
                     <div className="form_heading">
                         <h1>Sign Up</h1>
                         <p style={{ textAlign: "center" }}>We are glad that you will be using Project Cloud to manage <br />
                             your tasks! We hope that you will get like it.</p>
                     </div>
-
                     <form>
                         <div className='form_input'>
                             <label htmlFor='fname'> First Name </label>
@@ -318,7 +309,7 @@ const Register = () => {
                     </form>
                     <br />
                     <p style={{ color: "black", fontWeight: "bold" }}><NavLink to="/">Back To Home Page</NavLink></p>
-                    <ToastContainer />
+                    <Toaster/>
                 </div>
             </section>
         </>

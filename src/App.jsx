@@ -3,7 +3,6 @@ import ExamDashboard from "./components/ExamDashboard";
 
 import PolicyPage from "./components/PolicyPage";
 import Po1 from "./components/Po1";
-import PolicyPageCloud from "./components/PolicyPageCloud";
 import HomePage from "./components/HomePage";
 import HomePageCloud from "./components/HomePageCloud";
 import EApp from './ExamComponents/EApp';
@@ -87,7 +86,6 @@ function App() {
               
               <Route path="/policy" element={<PolicyPage />} />
               <Route path="/po1" element={<Po1 />} />
-              <Route path="/policyCloud" element={<PolicyPageCloud />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/homecloud" element={<HomePageCloud />} />
               <Route path='/eapp' element={ <EApp/> } />
