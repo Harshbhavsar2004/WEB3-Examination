@@ -136,9 +136,6 @@ const Certificate = () => {
                     toast.error("You have not given the exam", {
                         duration: 3000,
                     });
-                    setTimeout(() => {
-                        history("/dash");
-                    }, 1000);
                 }
             } catch (error) {
                 setError(error.message);
