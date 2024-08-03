@@ -1,0 +1,73 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-hand-side {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(25, 103, 103);
+    position: fixed; /* Ensure it stays on the left side */
+}
+.left-hand-side button{
+    width: 200px;
+    margin:30px;
+}
+.content-wrapper {
+    margin-left: 300px; /* Offset the content area by the width of the left-hand-side */
+    width: calc(100% - 300px);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Optional padding for better spacing */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.certificate-generated-showing p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+
+.button-css-downloadcontain{
+   position: relative;
+   left: -150px;
+   top: 20px;
+}
+
+.icon-for-download{
+    font-size: 30px;
+}
+
+/* Certificate.css */
+
+/* Container for the entire layout */
+.dashboard-container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  /* Style for the navbar container */
+  .navbar-container {
+    width: 250px; /* Adjust the width as needed */
+    background-color: #f4f4f4; /* Light background color for navbar */
+    border-right: 1px solid #ddd; /* Border on the right side */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for navbar */
+  }
+  
+  /* Style for the chart container */
+  .chart-container {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+
+  }
+  
+
+  

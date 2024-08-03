@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LoginContext } from './ContextProvider/Context';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Header from './Header';
 import './Dashboard.css';
-import Swal from 'sweetalert2';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { FaPhone, FaCalendarAlt, FaUser, FaFlag } from 'react-icons/fa';
+import { Button, Card, CardContent, Typography } from '@mui/material';
+import { AiFillCaretRight } from "react-icons/ai";
+import { IoMdDownload } from "react-icons/io";
 const Dashboard = () => {
   const { logindata, setLoginData } = useContext(LoginContext);
   const [data, setData] = useState(false);
@@ -53,31 +53,52 @@ const Dashboard = () => {
       <Header />
       {data ? (
         <div className="bucket">
-          <h1>Examinee Details</h1>
-          <div className="profile_data">
-            <div className="profile-card" style={{ marginTop: "10px" }}>
-              <img src={photoUrl} alt="Profile" />
-              <div className="profile-info">
-                <h2>
-                  Name: {logindata ? logindata.ValidUserOne.fname + ' ' + logindata.ValidUserOne.lname : ''}
-                </h2>
-                <p>Email: {logindata ? logindata.ValidUserOne.email : ''}</p>
-                <p>Course: {logindata ? logindata.ValidUserOne.course : ''}</p>
-              </div>
-            </div>
-          </div>
-          <div className="bucket1">
+          <Typography variant="h4" gutterBottom className="header-main-mui">Examinee Details</Typography>
+          <div className="profile-container">
+            <Card className="profile-card">
+              <img src={photoUrl} alt="Profile" className="profile-image" />
+              <CardContent className="profile-info-container">
+                <Typography variant="h6">
+                  <strong>Name:</strong> <span>{logindata ? `${logindata.ValidUserOne.fname} ${logindata.ValidUserOne.lname}` : ''}</span>
+                </Typography>
+                <Typography>
+                  <strong>Email:</strong> <span>{logindata ? logindata.ValidUserOne.email : ''}</span>
+                </Typography>
+                <Typography>
+                  <strong>Course:</strong> <span>{logindata ? logindata.ValidUserOne.course : ''}</span>
+                </Typography>
+              </CardContent>
+            </Card>
             <div className="profile-more">
-              <p>Phone Number: {logindata ? logindata.ValidUserOne.phone : ''}</p>
-              <p>Date of Birth: {logindata ? logindata.ValidUserOne.dob : ''}</p>
-              <p>Batch: {logindata ? logindata.ValidUserOne.batch : ''}</p>
-              <p>Gender: {logindata ? logindata.ValidUserOne.gender : ''}</p>
-              <p>Nationality: {logindata ? logindata.ValidUserOne.nationality : ''}</p>
+              <Card className='profile-card2'>
+                <Typography>
+                  <FaPhone className="icon" />
+                  <strong>Phone Number:</strong> <span>{logindata ? logindata.ValidUserOne.phone : ''}</span>
+                </Typography>
+                <Typography>
+                  <FaCalendarAlt className="icon" />
+                  <strong>Date of Birth:</strong> <span>{logindata ? logindata.ValidUserOne.dob : ''}</span>
+                </Typography>
+                <Typography>
+                  <FaUser className="icon" />
+                  <strong>Batch:</strong> <span>{logindata ? logindata.ValidUserOne.batch : ''}</span>
+                </Typography>
+                <Typography>
+                  <FaFlag className="icon" />
+                  <strong>Gender:</strong> <span>{logindata ? logindata.ValidUserOne.gender : ''}</span>
+                </Typography>
+                <Typography>
+                  <FaFlag className="icon" />
+                  <strong>Nationality:</strong> <span>{logindata ? logindata.ValidUserOne.nationality : ''}</span>
+                </Typography>
+              </Card>
             </div>
           </div>
-          <button onClick={goToExamDashboard} className='button-Css'>GO to DashBoard</button>
-          <ToastContainer />
-
+          <Button variant="contained" color="primary" onClick={goToExamDashboard} className='dashboard-button'>
+            <AiFillCaretRight />GO to Dashboard
+          </Button>
+            <Link to={'/DocumentDownloader'}><Button variant='contained' className='dashboard-button1'>
+            <IoMdDownload/><strong>Download Certificate</strong></Button></Link>
         </div>
       ) : (
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
