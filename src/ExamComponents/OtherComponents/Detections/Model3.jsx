@@ -48,10 +48,7 @@ const Model3 = () => {
 
         console.log('Submission successful');
         setLoading(false);
-        // Delay the redirection by 3 seconds
-        setTimeout(() => {
-            window.location.href = "/dash";
-        }, 3000);
+        history('/dash')
 
     } catch (error) {
         console.error('Error in submission process:', error);
