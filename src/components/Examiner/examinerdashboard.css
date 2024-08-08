@@ -1,169 +1,118 @@
-/* Global Styles */
-
-
-/* Main Container */
 .bucket-main {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
   text-align: center;
+  max-width: 1200px; /* Limit the width for better readability */
+  margin: 40px auto; /* Center the dashboard with margin */
+  padding: 30px;
+  background-color: #ffffff; /* White background for the dashboard */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
 }
 
-/* Heading */
-.bucket-main h1 {
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: bold;
+/* Header */
+h1 {
+  color: #333; /* Dark text for better contrast */
+  font-size: 2.5em; /* Larger font size for the title */
+  margin-bottom: 20px; /* Space below the title */
+  text-align: center; /* Center the title */
 }
 
-/* User Table Container */
+/* Search Bar */
+.search-container {
+  margin-bottom: 30px; /* Space below the search bar */
+  text-align: center; /* Center elements */
+}
+
+/* User Table Styles */
 .user-table-container {
-  overflow-x: auto;
-  margin-top: 20px;
+  overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
 }
 
-/* User Table */
+/* Table Styles */
 .user-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  text-align: center; /* Center content in cells */
+  width: 100%; /* Full width of the container */
+  border-collapse: collapse; /* Remove spacing between cells */
 }
 
-/* Table Headers and Cells */
 .user-table th, .user-table td {
-  padding: 15px;
-  border: 1px solid #ddd;
+  padding: 15px; /* Padding for table cells */
+  text-align: left; /* Align text to the left */
+  border-bottom: 1px solid #ddd; /* Light border for rows */
 }
 
 .user-table th {
-  background-color: #26293b;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
+  background-color: #1966b8cd; /* Header background color */
+  color: #ffffff; /* White text for header */
+  font-weight: bold; /* Bold text for header */
+  text-transform: uppercase; /* Uppercase header text */
+  text-align: center;
 }
 
-.user-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+/* Table Row Hover Effect */
+.user-table tr:hover {
+  background-color: #f1f1f1; /* Light gray on row hover */
 }
 
 /* Button Styles */
-/* Enhanced Button Styles */
 .button-css {
-  background-color: #fff;
-  color: #333; /* Darker color for better contrast */
-  border: 2px solid #007bff; /* Border color matching the button color */
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 40px;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase; /* Makes button text uppercase */
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition effect */
-  outline: none; /* Remove default outline */
+  display: inline-flex;
+  align-items: center; /* Center the icon and text */
+  padding: 10px 15px; /* Padding for buttons */
+  margin: 0 5px; /* Margin between buttons */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners for buttons */
+  background-color: #090909aa; /* Green color for primary buttons */
+  color: #ffffff; /* White text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transition */
 }
-
-/* Hover State */
-.button-css:hover {
-  background-color: #007bff; /* Button color on hover */
-  color: #fff; /* Text color on hover */
-  border-color: #0056b3; /* Darker border color on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-}
-
-/* Focus State */
-.button-css:focus {
-  border-color: #0056b3; /* Border color on focus */
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Focus ring */
-}
-
-/* Disabled State */
-.button-css:disabled {
-  background-color: #e0e0e0; /* Light grey background for disabled state */
-  color: #b0b0b0; /* Grey text color for disabled state */
-  border-color: #d0d0d0; /* Light grey border */
-  cursor: not-allowed; /* Cursor change for disabled state */
-  box-shadow: none; /* Remove shadow */
-}
-
-/* Button Container for Centering */
-.button-container, .button-containe {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 
 .button-css:hover {
-  background-color: #0056b3;
-  color: white;
-}
-
-/* Button Container */
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.button-container-main button{
-margin-left: 50px;
-
+  background-color: #4d2355; /* Darker green on hover */
+  transform: translateY(-1px); /* Slight lift effect */
 }
 
 /* Pagination Styles */
 .pagination {
-  display: flex;
   list-style: none;
-  padding: 0;
-  margin: 20px 0;
-  justify-content: center;
+  display: flex;
+  justify-content: center; /* Center pagination controls */
+  margin-top: 30px; /* Space above pagination */
 }
 
-.pagination .page-item {
-  margin: 0 5px;
+.page-item {
+  margin: 0 5px; /* Margin between pagination items */
 }
 
-.pagination .page-link {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #007bff;
-  cursor: pointer;
+.page-link {
+  padding: 10px 15px; /* Padding for pagination links */
+  border: 1px solid #007bff; /* Matching border color */
+  border-radius: 5px; /* Rounded corners */
+  color: #007bff; /* Link color */
+  text-decoration: none; /* No underline */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
-.pagination .active .page-link {
-  background-color: #007bff;
-  color: white;
+.page-link:hover {
+  background-color: #007bff; /* Background on hover */
+  color: #ffffff; /* Change text color on hover */
 }
 
-.pagination .page-link:hover {
-  background-color: #ddd;
+.active .page-link {
+  background-color: #007bff; /* Background for active page */
+  color: #ffffff; /* White text for active page */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .bucket-main {
-    padding: 10px;
+  h1 {
+      font-size: 2em; /* Adjust font size for smaller screens */
   }
 
   .user-table th, .user-table td {
-    padding: 10px;
+      padding: 10px; /* Reduce padding in table cells */
   }
 
-  .pagination .page-link {
-    padding: 8px 12px;
+  .button-css {
+      font-size: 14px; /* Smaller font for buttons */
   }
 }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -10,7 +10,16 @@ const Header = () => {
   const { logindata, setLoginData } = useContext(LoginContext);
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [hasToken, setHasToken] = useState(false);
+  const [hasExaminerToken, setHasExaminerToken] = useState(false);
   const open = Boolean(anchorEl);
+
+  useEffect(() => {
+    const userToken = localStorage.getItem("usersdatatoken");
+    const examinerToken = localStorage.getItem("examinerToken");
+    setHasToken(!!userToken);
+    setHasExaminerToken(!!examinerToken);
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,22 +32,25 @@ const Header = () => {
   const logoutuser = () => {
     try {
       localStorage.removeItem("usersdatatoken");
+      localStorage.removeItem("examinerToken");
       setLoginData(false);
+      setHasToken(false);
+      setHasExaminerToken(false);
       navigate("/login");
     } catch (error) {
       console.error("An error occurred during logout", error);
     }
   };
-  
-  
-  
 
   const goDash = () => {
     navigate("/dash");
   };
 
   const goExDash = () => {
-    navigate("/examDashboard");
+    navigate("/addExam");
+  };
+  const goEx2Dash = () => {
+    navigate("/examinerdash");
   };
 
   const goLogin = () => {
@@ -51,9 +63,6 @@ const Header = () => {
 
   const goExaminer = () => {
     navigate("/examiner");
-  };
-  const goError = () => {
-    navigate("*");
   };
 
   return (
@@ -89,7 +98,31 @@ const Header = () => {
             "aria-labelledby": "basic-button",
           }}
         >
-          {logindata.ValidUserOne ? (
+          {hasExaminerToken ? (
+            <>
+              <MenuItem
+                onClick={() => {
+                  goExDash();
+                  handleClose();
+                }}
+              >
+                Add Exam
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  goEx2Dash();
+                  handleClose();
+                }}
+              >
+                Users stats
+              </MenuItem>
+              <MenuItem
+                onClick={logoutuser}
+              >
+                Logout
+              </MenuItem>
+            </>
+          ) : hasToken ? (
             <>
               <MenuItem
                 onClick={() => {

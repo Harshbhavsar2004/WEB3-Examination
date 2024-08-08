@@ -31,7 +31,7 @@ const Model3 = () => {
     }
 
     try {
-        const response = await fetch('https://examination-center.onrender.com/submit', {
+        const response = await fetch('http://localhost:3000/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

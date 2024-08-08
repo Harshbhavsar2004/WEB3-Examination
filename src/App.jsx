@@ -25,6 +25,8 @@ import ReportProblem from "@mui/icons-material/ReportProblem";
 import CertificateNavbar from "./components/Certificate/certificatenavbar";
 import "./App.css"
 import ReportDownloader from "./components/Certificate/ReportDownloader";
+import ProtectedRoute from "./components/Examiner/ProtectedRoute";
+import DataAdd from "./components/Examiner/add-Exam/Dataadd";
 
 function App() {
 
@@ -38,7 +40,7 @@ function App() {
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
 
-    const res = await fetch("https://examination-center.onrender.com/validuser", {
+    const res = await fetch("http://localhost:3000/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -70,30 +72,28 @@ function App() {
       {
         data ? (
           <>
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/examiner" element={<Examiner />} />
-
-                <Route path="/examinerdash" element={<ExaminerDash />} />
-                <Route path="/dash" element={<Dashboard />} />
-                <Route path="/examDashboard" element={<ExamDashboard />} />
-                <Route path="/password-reset" element={<PasswordReset />} />
-                <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
-                <Route path="/policy" element={<PolicyPage />} />
-                <Route path="/po1" element={<Po1 />} />
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/homecloud" element={<HomePageCloud />} />
-                <Route path='/eapp' element={<EApp />} />
-                <Route path="/fullscreen" element={<FullScreenExample />} />
-                {/* <Route path='/eappcloud' element={ <EAppCloud/> } /> */}
-                <Route path="/DocumentDownloader" element={<CertificateNavbar />}></Route>
-                  <Route path="/reportDownloader" element={<ReportDownloader />} />
-                  <Route path="/DownloadCertificate" element={<Certificate />} />
-                
-                <Route path="*" element={<Error />} />
-              </Routes>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/examiner" element={<Examiner />} />
+              <Route path="/examinerdash" element={<ProtectedRoute element={<ExaminerDash />} />} />
+              <Route path="/dash" element={<Dashboard />} />
+              <Route path="/examDashboard" element={<ExamDashboard />} />
+              <Route path="/addExam" element={<DataAdd /> } />
+              <Route path="/password-reset" element={<PasswordReset /> } />
+              <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
+              <Route path="/policy" element={<PolicyPage />} />
+              <Route path="/po1" element={<Po1 />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/homecloud" element={<HomePageCloud />} />
+              <Route path="/eapp" element={<EApp />} />
+              <Route path="/fullscreen" element={<FullScreenExample />} />
+              <Route path="/DocumentDownloader" element={<CertificateNavbar />} />
+              <Route path="/reportDownloader" element={<ReportDownloader />} />
+              <Route path="/DownloadCertificate" element={<Certificate />} />
+              <Route path="*" element={<Error />} />
+            </Routes>
           </>
 
         ) : <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", height: "100vh" }}>

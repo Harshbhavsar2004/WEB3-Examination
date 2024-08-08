@@ -145,7 +145,7 @@ const Register = () => {
                 formData.append("password", inpval.password);
                 formData.append("cpassword", inpval.cpassword);
 
-                const data = await fetch("https://examination-center.onrender.com/register", {
+                const data = await fetch("http://localhost:3000/register", {
                     method: "POST",
                     body: formData
                 });

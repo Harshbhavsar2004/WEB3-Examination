@@ -30,59 +30,50 @@ const Examiner = () => {
 
     const loginuser = async (e) => {
         e.preventDefault();
-
+    
         const { email, password } = inpval;
-
+    
         if (email === "") {
-            // alert("Email is required!")
             toast.error("Email is required!", {
                 position: "top-center"
             });
         } else if (!email.includes("@")) {
-            // alert("Includes @ in your email!")
             toast.error("Includes @ in your email!", {
                 position: "top-center"
             });
         } else if (password === "") {
-            // alert("Password is required!")
             toast.error("Password is required!", {
                 position: "top-center"
             });
         } else if (password.length < 6) {
-            // alert("Password must be 6 char!")
             toast.error("Password must be 6 char!", {
                 position: "top-center"
             });
         } else {
-             console.log("user login succesfully done");
-
-          
-            //  console.log(res);
-
-            if (email == "test@gmail.com" && password == "pass123") {
+            if (email === "test@gmail.com" && password === "pass123") {
                 toast.success('Logged in successfully!', {
                     duration: 4000,
                     position: 'top-center',
                     style: {
-                      background: '#fff',
-                      color: '#000',
-                      fontWeight: 'bold',
+                        background: '#fff',
+                        color: '#000',
+                        fontWeight: 'bold',
                     },
-                  });
-          
-                setTimeout(()=>{
+                });
+                localStorage.setItem("examinerToken", "someHashValueOrToken");
+    
+                setTimeout(() => {
                     history("/examinerdash")
-                },1000)
+                }, 1000);
                 setInpval({ ...inpval, email: "", password: "" });
             } else {
-                // alert("Invalid Credentials!")
                 toast.error("Invalid Credentials", {
                     position: "top-center"
                 });
             }
-
         }
     }
+    
 
     return (
         <>

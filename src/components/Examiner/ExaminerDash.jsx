@@ -9,7 +9,7 @@ import ResetIcon from '@mui/icons-material/RestartAlt';
 import AlertIcon from '@mui/icons-material/ReportProblem';
 import Searchbar from './Searchbar';
 import ReactPaginate from 'react-paginate';
-
+import DeleteIcon from '@mui/icons-material/Delete'; // Import Delete icon
 const ITEMS_PER_PAGE = 10;
 
 const ExaminerDash = () => {
@@ -18,9 +18,32 @@ const ExaminerDash = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(true);
 
+
+    const handleDeleteUser = async (userId) => {
+      try {
+        const response = await fetch(`http://localhost:3000/deleteUser/${userId}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+        });
+  
+        if (response.ok) {
+          toast.success("User has been deleted", { position: 'top-center' });
+  
+          setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
+          
+        } else {
+          const data = await response.json();
+          toast.error(data.message);
+        }
+      } catch (error) {
+        toast.error('Failed to delete user. Please try again.');
+        console.error('Error deleting user:', error);
+      }
+    };
+
   const fetchUsers = async () => {
     try {
-      const response = await fetch('https://examination-center.onrender.com/fetchusers', {
+      const response = await fetch('http://localhost:3000/fetchusers', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -59,7 +82,7 @@ const ExaminerDash = () => {
 
   const handleResetCounts = async (userId) => {
     try {
-      const response = await fetch(`https://examination-center.onrender.com/resetCounts/${userId}`, {
+      const response = await fetch(`http://localhost:3000/resetCounts/${userId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -83,7 +106,7 @@ const ExaminerDash = () => {
 
   const showCheat = async (userId) => {
     try {
-      const response = await fetch(`https://examination-center.onrender.com/cheat/${userId}`, {
+      const response = await fetch(`http://localhost:3000/cheat/${userId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -142,7 +165,8 @@ const ExaminerDash = () => {
                 <th>Score</th>
                 <th>Cheat Count</th>
                 <th>Cheat</th>
-                <th>Reset Cheat</th>
+                <th>Reset Exam</th>
+                <th>Delete User</th>
               </tr>
             </thead>
             <tbody>
@@ -160,6 +184,11 @@ const ExaminerDash = () => {
                   <td className="button-container">
                     <button onClick={() => handleResetCounts(user._id)} className="button-css">
                       <ResetIcon className="icon" /> Reset Cheat
+                    </button>
+                  </td>
+                  <td className="button-container">
+                    <button onClick={() => handleDeleteUser(user._id)} className="button-css">
+                      <DeleteIcon className="icon" /> Delete User
                     </button>
                   </td>
                 </tr>
@@ -193,3 +222,4 @@ const ExaminerDash = () => {
 };
 
 export default ExaminerDash;
+

@@ -67,7 +67,7 @@ const Quiz = () => {
     // Send score to the backend
     const token = localStorage.getItem('usersdatatoken');
     try {
-      const response = await fetch('https://examination-center.onrender.com/score', {
+      const response = await fetch('http://localhost:3000/score', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const Quiz = () => {
 
 
    try {
-      await fetch('https://examination-center.onrender.com/submit', {
+      await fetch('http://localhost:3000/submit', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ const StatsChart = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('usersdatatoken'); // Get token from localStorage
-        const response = await fetch('https://examination-center.onrender.com/user/stats', {
+        const response = await fetch('http://localhost:3000/user/stats', {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`

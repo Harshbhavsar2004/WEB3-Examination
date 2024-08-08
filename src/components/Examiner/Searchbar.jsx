@@ -4,14 +4,17 @@ import './searchbar.css';
 
 const Searchbar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [flag , setFlag] = useState(false)
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
     onSearch(e.target.value);
   };
 
+  const handleclickchange = () =>{
+    setFlag(!flag)
+  }
   return (
-    <div className="searchbar-container">
+    <div onClick={handleclickchange} className="searchbar-container" style={flag ? {border:'2px solid black'} : null }>
       <SearchIcon className="search-icon" />
       <input
         type="text"
