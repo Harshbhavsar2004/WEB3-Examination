@@ -121,7 +121,7 @@ const Certificate = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch("http://localhost:3000/user-data", {
+                const response = await fetch("https://first-project-backend-ycff.onrender.com/user-data", {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("usersdatatoken")}`,

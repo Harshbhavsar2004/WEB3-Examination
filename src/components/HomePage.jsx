@@ -58,7 +58,7 @@ const Profile = () => {
 
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
-    const res = await fetch("http://localhost:3000/validuser", {
+    const res = await fetch("https://first-project-backend-ycff.onrender.com/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

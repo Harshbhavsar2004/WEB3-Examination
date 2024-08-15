@@ -22,7 +22,7 @@ function AudioDetector() {
                         setAlert(true);
                         setCount(prevCount => prevCount + 1); // Increment Count variable
                         // Hit the backend endpoint using fetch
-                        fetch('http://localhost:3000/voice', {
+                        fetch('https://first-project-backend-ycff.onrender.com/voice', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',

@@ -26,7 +26,7 @@ import CertificateNavbar from "./components/Certificate/certificatenavbar";
 import "./App.css"
 import ReportDownloader from "./components/Certificate/ReportDownloader";
 import ProtectedRoute from "./components/Examiner/ProtectedRoute";
-import DataAdd from "./components/Examiner/add-Exam/Dataadd";
+import DataAdd from "./components/Examiner/add-Exam/Dataadd.jsx";
 
 function App() {
 
@@ -40,7 +40,7 @@ function App() {
   const DashboardValid = async () => {
     let token = localStorage.getItem("usersdatatoken");
 
-    const res = await fetch("http://localhost:3000/validuser", {
+    const res = await fetch("https://first-project-backend-ycff.onrender.com/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

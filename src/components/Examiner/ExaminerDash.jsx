@@ -21,7 +21,7 @@ const ExaminerDash = () => {
 
     const handleDeleteUser = async (userId) => {
       try {
-        const response = await fetch(`http://localhost:3000/deleteUser/${userId}`, {
+        const response = await fetch(`https://first-project-backend-ycff.onrender.com/deleteUser/${userId}`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
         });
@@ -43,7 +43,7 @@ const ExaminerDash = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3000/fetchusers', {
+      const response = await fetch('https://first-project-backend-ycff.onrender.com/fetchusers', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -82,7 +82,7 @@ const ExaminerDash = () => {
 
   const handleResetCounts = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:3000/resetCounts/${userId}`, {
+      const response = await fetch(`https://first-project-backend-ycff.onrender.com/resetCounts/${userId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -106,7 +106,7 @@ const ExaminerDash = () => {
 
   const showCheat = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:3000/cheat/${userId}`, {
+      const response = await fetch(`https://first-project-backend-ycff.onrender.com/cheat/${userId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });

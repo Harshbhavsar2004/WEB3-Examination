@@ -47,7 +47,7 @@ const Header = () => {
   };
 
   const goExDash = () => {
-    navigate("/addExam");
+    navigate("/examDashboard");
   };
   const goEx2Dash = () => {
     navigate("/examinerdash");
