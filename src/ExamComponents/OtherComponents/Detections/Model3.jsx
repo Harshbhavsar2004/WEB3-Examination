@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Model3.css';
 
 const Model3 = () => {
-  const [countdown, setCountdown] = useState(10); // 300 seconds = 5 minutes
+  const [countdown, setCountdown] = useState(10); // Countdown time in seconds
   const [buttonEnabled, setButtonEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,36 +27,38 @@ const Model3 = () => {
     setLoading(true); // Set loading to true when the button is clicked
     const token = localStorage.getItem('usersdatatoken');
     if (!token) {
-        console.error('No token found');
-        setLoading(false); // Set loading to false in case of error
-        return;
+      console.error('No token found');
+      setLoading(false); // Set loading to false in case of error
+      navigate('/dash'); // Redirect to /dash if no token
+      return;
     }
 
     try {
-        const response = await fetch('https://first-project-backend-ycff.onrender.com/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ submit: true })
-        });
+      const response = await fetch('https://first-project-backend-ycff.onrender.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ submit: true })
+      });
 
-        if (!response.ok) {
-            console.error('Error submitting', response.statusText);
-            setLoading(false); // Set loading to false in case of error
-            return;
-        }
+      if (!response.ok) {
+        console.error('Error submitting', response.statusText);
+        navigate('/dash'); // Redirect to /dash if submission fails
+        return;
+      }
 
-        console.log('Submission successful');
-        setLoading(false);
-        history('/dash')
+      console.log('Submission successful');
+      navigate('/dash'); // Redirect to /dash if submission is successful
 
     } catch (error) {
-        console.error('Error in submission process:', error);
-        setLoading(false); // Set loading to false in case of error
+      console.error('Error in submission process:', error);
+      navigate('/dash'); // Redirect to /dash if there is an error
+    } finally {
+      setLoading(false); // Always set loading to false
     }
-};
+  };
 
   // Format seconds into minutes and seconds for display
   const formatTime = (seconds) => {
