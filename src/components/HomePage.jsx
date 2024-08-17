@@ -238,7 +238,7 @@ const Profile = () => {
           <Link to="/eapp">
             <button
               onClick={handle.enter}
-              disabled={isChecked}
+              disabled={!isChecked}
               className="start-button"
               title={
                 isChecked
